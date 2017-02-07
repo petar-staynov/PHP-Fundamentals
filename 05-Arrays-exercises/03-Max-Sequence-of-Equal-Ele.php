@@ -5,13 +5,29 @@
 
 <?php
 if(isset($_GET['submit'])){
-    $arrOrig = explode(" ", $_GET['text']);
+    $nums = explode(" ", $_GET['text']);
 //    $arr = array_reverse($arrOrig);
-    $arr = $arrOrig;
 
-    $result = [];
+    $maxArr = [];
+    $currentArr = [];
 
-    for ($i = 0; $i < count($arr) - 1; $i++){
+    for ($i = 0; $i < count($nums)- 1; $i++){
+        $tempArr = [];
+        array_push($tempArr, $nums[$i]);
 
+        echo "current num $nums[$i] <br>";
+
+        if ($nums[$i] == $tempArr[0]){
+                array_push($tempArr, $nums[$i]);
+                echo "push in temp <br>";
+        } elseif ($nums[$i] != $tempArr[0]){
+            $tempArr = [];
+            echo "clear temp <br>";
+        }
+
+        if (count($maxArr) < count($tempArr)){
+            $maxArr = $tempArr;
+        }
     }
+    echo implode(" ", $maxArr);
 }
