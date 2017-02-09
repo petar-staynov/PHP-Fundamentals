@@ -17,10 +17,10 @@
 <?php
 if(isset($_GET['submit'])){
 
-    $arr1 = explode(" ", $_GET['text']);
-//    $arr1 = explode(" ", trim(fgets(STDIN)));
-    $arr2 = explode(" ", $_GET['text2']);
-//    $arr2 = explode(" ", trim(fgets(STDIN)));
+//    $arr1 = explode(" ", $_GET['text']);
+    $arr1 = explode(" ", trim(fgets(STDIN)));
+//    $arr2 = explode(" ", $_GET['text2']);
+    $arr2 = explode(" ", trim(fgets(STDIN)));
 
     $longerArr = [];
     $shorterArr = [];
