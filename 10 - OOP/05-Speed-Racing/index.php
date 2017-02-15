@@ -26,13 +26,13 @@
             $this->distanceTraveled += $distance;
         }
 
-        function __toString($input)
+        function __toString()
         {
             return $this->model
                 . " "
-                . round($this->fuelAmount, 2)
+                . number_format(abs($this->fuelAmount), 2)
                 . " "
-                . round($this->distanceTraveled, 2);
+                . ceil($this->distanceTraveled);
         }
     }
 
@@ -50,23 +50,23 @@
     }
 
     $command = "true";
-
     while ($command != "END"){
         $tokens = explode(" ", trim(fgets(STDIN)));
+        if ($tokens[0] == "END" && count($tokens) == 1){
+            break;
+        }
+
         $model = $tokens[1];
         $km = $tokens[2];
-
-
-
         $car = $cars[$model];
         try {
             $car->drive($km);
         } catch (Exception $e){
             echo $e->getMessage() . PHP_EOL;
         }
-        $command = trim(fgets(STDIN));
     }
 
     foreach ($cars as $car){
         echo $cars . PHP_EOL;
     }
+
